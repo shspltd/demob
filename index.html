@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b1020">
+<title>StayHappy Solutions | Product Demo Hub</title>
+<style>
+:root{--bg:#080d1b;--panel:rgba(18,27,49,.78);--panel2:#121d34;--line:rgba(170,190,230,.14);--muted:#9aa9c5;--text:#f4f7ff;--cyan:#63d7e8;--violet:#9b8cff;--mint:#83e3bd;--gold:#f0c77b}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 15% 0%,rgba(71,91,180,.22),transparent 35%),radial-gradient(ellipse at 95% 25%,rgba(30,170,180,.12),transparent 32%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(to bottom,black,transparent 85%)}
+.wrap{width:min(1180px,calc(100% - 40px));margin:auto;position:relative}
+nav{height:82px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:12px;font-weight:750;letter-spacing:-.3px}.logo{width:39px;height:39px;border-radius:13px;background:linear-gradient(135deg,#70d8e8,#8e83ff);display:grid;place-items:center;color:#091323;font-weight:900;box-shadow:0 8px 30px #6ed8e833}.brand small{display:block;color:var(--muted);font-weight:500;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;margin-top:2px}
+.nav-right{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:13px}.live{width:7px;height:7px;background:#68e0ae;border-radius:50%;box-shadow:0 0 0 5px #68e0ae20}
+.hero{padding:76px 0 48px;display:grid;grid-template-columns:1.25fr .75fr;gap:45px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;border:1px solid #8d9eff38;background:#7f8fff12;color:#b9c5ff;padding:8px 12px;border-radius:99px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase}
+h1{font-size:clamp(38px,5.7vw,66px);line-height:1.04;letter-spacing:-2.8px;margin:22px 0 18px;max-width:700px}h1 span{background:linear-gradient(100deg,#77dbe8,#a69aff 60%,#f1c982);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:#aab7d0;font-size:16px;line-height:1.75;max-width:620px;margin:0}
+.hero-side{border:1px solid var(--line);background:linear-gradient(145deg,rgba(26,39,68,.86),rgba(14,22,41,.7));border-radius:24px;padding:24px;box-shadow:0 24px 80px #0004;position:relative;overflow:hidden}
+.hero-side:after{content:"";position:absolute;width:190px;height:190px;border-radius:50%;background:#8b83ff22;filter:blur(35px);right:-65px;top:-75px}
+.side-label{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:1.4px}.metric{font-size:42px;font-weight:800;letter-spacing:-2px;margin:8px 0 2px}.metric-sub{color:var(--muted);font-size:13px}.mini-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:22px}.mini{background:#ffffff08;border:1px solid var(--line);border-radius:13px;padding:13px}.mini b{display:block;font-size:17px}.mini span{color:var(--muted);font-size:11px}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin:12px 0 22px}.section-head h2{font-size:24px;letter-spacing:-.7px;margin:0 0 6px}.section-head p{margin:0;color:var(--muted);font-size:13px}
+.controls{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-bottom:20px}.search{flex:1;min-width:220px;position:relative}.search input{width:100%;border:1px solid var(--line);background:#111b30;color:var(--text);border-radius:12px;padding:13px 15px 13px 42px;outline:none;font:inherit}.search input:focus{border-color:#8e9aff88;box-shadow:0 0 0 3px #8e9aff15}.search:before{content:"⌕";position:absolute;left:15px;top:7px;font-size:25px;color:var(--muted)}
+.filter{border:1px solid var(--line);background:#111b30;color:#aab7d0;padding:11px 15px;border-radius:12px;font:600 12px inherit;cursor:pointer;transition:.2s}.filter.active,.filter:hover{color:#fff;border-color:#8d9eff80;background:#7e8eff1c}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}
+.card{position:relative;border:1px solid var(--line);border-radius:21px;padding:23px;background:linear-gradient(150deg,rgba(23,35,61,.9),rgba(14,22,40,.9));overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s;min-height:260px}
+.card:hover{transform:translateY(-5px);border-color:#9caaff70;box-shadow:0 18px 45px #0004}.card:before{content:"";position:absolute;width:170px;height:170px;right:-70px;top:-75px;border-radius:50%;background:var(--glow);filter:blur(30px);opacity:.23}
+.card-top{display:flex;justify-content:space-between;align-items:center;position:relative}.app-icon{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;font-size:22px;background:var(--iconbg);border:1px solid #ffffff17}.tag{font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,transparent);border:1px solid color-mix(in srgb,var(--accent) 25%,transparent);padding:7px 10px;border-radius:99px;font-weight:750}
+.card h3{font-size:21px;letter-spacing:-.5px;margin:19px 0 8px;position:relative}.card p{color:#a5b3cd;line-height:1.6;font-size:13px;margin:0;max-width:490px;position:relative}.features{display:flex;flex-wrap:wrap;gap:7px;margin:17px 0 20px;position:relative}.features span{font-size:10px;color:#b7c4dc;border:1px solid var(--line);padding:6px 9px;border-radius:7px;background:#ffffff05}
+.card-foot{display:flex;align-items:center;justify-content:space-between;position:relative}.launch{display:inline-flex;align-items:center;gap:9px;text-decoration:none;color:#071421;background:linear-gradient(100deg,var(--accent),color-mix(in srgb,var(--accent) 65%,white));padding:11px 15px;border-radius:11px;font-size:12px;font-weight:800;transition:.2s}.launch:hover{filter:brightness(1.08);transform:translateX(2px)}.type{font-size:11px;color:var(--muted)}
+.empty{display:none;text-align:center;color:var(--muted);padding:38px;border:1px dashed var(--line);border-radius:18px;grid-column:1/-1}
+.note{margin:26px 0 70px;border:1px solid var(--line);border-radius:17px;background:#ffffff05;padding:17px 19px;color:var(--muted);font-size:12px;line-height:1.6}.note b{color:#e4eaff}
+footer{border-top:1px solid var(--line);padding:24px 0 32px;color:#8291ad;font-size:11px;display:flex;justify-content:space-between;gap:15px}
+@media(max-width:760px){.hero{grid-template-columns:1fr;padding:52px 0 36px;gap:25px}.hero-side{max-width:none}.grid{grid-template-columns:1fr}.section-head{align-items:start;flex-direction:column}.nav-right .nav-text{display:none}h1{letter-spacing:-1.8px}.wrap{width:min(100% - 28px,1180px)}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+
+.launch{
+  color: white !important;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav>
+  <div class="brand"><div class="logo">SH</div><div>StayHappy Solutions<small>Product Demo Hub</small></div></div>
+  <div class="nav-right"><span class="live"></span><span class="nav-text">Interactive product showcase</span></div>
+</nav>
+<header class="hero">
+  <div>
+    <div class="eyebrow">✦ Built on Trust. Proven by Results.</div>
+    <h1>Explore what we<br><span>can build together.</span></h1>
+    <p class="lead">A curated showcase of StayHappy Solutions' digital products and business platforms. Explore each demo to experience the interface, workflows and possibilities.</p>
+  </div>
+  <aside class="hero-side">
+    <div class="side-label">Your demo workspace</div>
+    <div class="metric">04</div>
+    <div class="metric-sub">Interactive product experiences</div>
+    <div class="mini-grid">
+      <div class="mini"><b>Business</b><span>Operations tools</span></div>
+      <div class="mini"><b>Digital</b><span>Customer experiences</span></div>
+    </div>
+  </aside>
+</header>
+<main>
+  <div class="section-head">
+    <div><h2>Product demonstrations</h2><p>Select a product to open its live demo experience.</p></div>
+    <div class="side-label">STAYHAPPY / SHOWCASE 2026</div>
+  </div>
+  <div class="controls">
+    <div class="search"><input id="search" type="search" placeholder="Search demos..." aria-label="Search demos"></div>
+    <button class="filter active" data-filter="all">All products</button>
+    <button class="filter" data-filter="business">Business tools</button>
+    <button class="filter" data-filter="customer">Customer experience</button>
+  </div>
+  <section class="grid" id="cards">
+    <article class="card" data-category="business" data-search="billing invoice gst payment finance">
+      <div class="card-top"><div class="app-icon" style="--iconbg:#d9b66c20">▤</div><span class="tag" style="--accent:#e9c77f">Finance</span></div>
+      <h3>Billing & Invoicing</h3>
+      <p>Create invoices, manage customers and products, calculate taxes, track payment status and review billing reports.</p>
+      <div class="features"><span>Invoice management</span><span>GST calculations</span><span>Reports</span></div>
+      <div class="card-foot"><a class="launch" href="stayhappy_billing_demo.html" target="_blank" rel="noopener">Launch demo <span>↗</span></a><span class="type">Business platform</span></div>
+    </article>
+    <article class="card" data-category="business" data-search="crm customer leads sales pipeline contacts follow ups">
+      <div class="card-top"><div class="app-icon" style="--iconbg:#7b9cff20">◎</div><span class="tag" style="--accent:#91aaff">Sales & CRM</span></div>
+      <h3>CRM & Customer Management</h3>
+      <p>Organise leads, manage customer relationships, track deals, schedule follow-ups and monitor your sales pipeline.</p>
+      <div class="features"><span>Lead tracking</span><span>Sales pipeline</span><span>Activities</span></div>
+      <div class="card-foot"><a class="launch" href="stayhappy_customer_management_demo.html" target="_blank" rel="noopener">Launch demo <span>↗</span></a><span class="type">Business platform</span></div>
+    </article>
+    <article class="card" data-category="business" data-search="inventory stock products warehouse supplier purchase order">
+      <div class="card-top"><div class="app-icon" style="--iconbg:#7de0bd20">▦</div><span class="tag" style="--accent:#83e3bd">Operations</span></div>
+      <h3>Inventory & Stock Management</h3>
+      <p>Monitor stock levels, record stock movements, manage suppliers and warehouses, and track purchasing and dispatch.</p>
+      <div class="features"><span>Stock control</span><span>Purchase orders</span><span>Warehouses</span></div>
+      <div class="card-foot"><a class="launch" href="stayhappy_inventory_management_demo.html" target="_blank" rel="noopener">Launch demo <span>↗</span></a><span class="type">Business platform</span></div>
+    </article>
+    <article class="card" data-category="customer" data-search="booking website appointment venue wellness service customer">
+      <div class="card-top"><div class="app-icon" style="--iconbg:#71d9d520">◇</div><span class="tag" style="--accent:#70d9d0">Booking</span></div>
+      <h3>Online Booking Website</h3>
+      <p>A customer-facing booking experience to discover services, explore listings, choose a slot and submit a booking request.</p>
+      <div class="features"><span>Service discovery</span><span>Booking flow</span><span>Responsive UI</span></div>
+      <div class="card-foot"><a class="launch" href="stayhappy_booking_website_demo.html" target="_blank" rel="noopener">Launch demo <span>↗</span></a><span class="type">Customer experience</span></div>
+    </article>
+    <div class="empty" id="empty">No demos match your search. Try another keyword or filter.</div>
+  </section>
+  <div class="note"><b>Demo environment:</b> These are interactive prototype demonstrations using sample data. Features such as live payments, production databases, user authentication, notifications and third-party integrations may require implementation in the final solution.</div>
+</main>
+<footer><span>© 2026 StayHappy Solutions Pvt. Ltd.</span><span>Built on Trust. Proven by Results.</span></footer>
+</div>
+<script>
+const search=document.getElementById('search'), buttons=[...document.querySelectorAll('.filter')], cards=[...document.querySelectorAll('.card')], empty=document.getElementById('empty');
+let category='all';
+function update(){const q=search.value.trim().toLowerCase();let count=0;cards.forEach(card=>{const matchCat=category==='all'||card.dataset.category===category;const matchText=(card.dataset.search+' '+card.innerText).toLowerCase().includes(q);const show=matchCat&&matchText;card.style.display=show?'block':'none';if(show)count++});empty.style.display=count?'none':'block'}
+search.addEventListener('input',update);buttons.forEach(btn=>btn.addEventListener('click',()=>{category=btn.dataset.filter;buttons.forEach(b=>b.classList.toggle('active',b===btn));update()}));
+</script>
+</body>
+</html>
